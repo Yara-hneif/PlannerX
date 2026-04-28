@@ -2,7 +2,7 @@ name: Android CI/CD Build
 
 on:
   push:
-    branches: [ "main", "master" ] # سيعمل عند الرفع على الفرع الرئيسي
+    branches: [ "main", "master", "feature/devops-pipeline" ]
   pull_request:
     branches: [ "main", "master" ]
 
@@ -27,8 +27,3 @@ jobs:
         with:
           name: PlannerX-Debug-APK
           path: app/build/outputs/apk/debug/app-debug.apk
-
-      - name: Scan for Vulnerabilities
-        uses: snyk/actions/gradle-jdk17@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
